@@ -11,7 +11,7 @@ function SearchBar ({placeholder, data}) {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = data.filter((value) => {
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+      return value.title.toLowerCase().includes(searchWord.toLowerCase()) || value.artist.toLowerCase().includes(searchWord.toLowerCase()) || value.album.toLowerCase().includes(searchWord.toLowerCase()) || value.release_date.toLowerCase().includes(searchWord.toLowerCase()) || value.genre.toLowerCase().includes(searchWord.toLowerCase());
     });
 
     if (searchWord === "") {
@@ -39,7 +39,7 @@ function SearchBar ({placeholder, data}) {
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <a className="dataItem" href={value.link} target="_blank">
-                <p>{value.title} </p>
+                <p>{value.title}, {value.artist}, {value.album}, {value.release_date}, {value.genre} </p>
               </a>
             );
           })}
