@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddSongForm from "./AddSongForm/AddSongForm";
 import MusicTable from "./MusicTable/MusicTable";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <div>
+      <AddSongForm addNewSongProperty={addNewSong} />
       <MusicTable parentSongs={songs}/>
     </div>
   );
