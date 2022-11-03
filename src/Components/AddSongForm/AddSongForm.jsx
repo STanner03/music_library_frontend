@@ -29,26 +29,16 @@ const AddSongForm = (props) => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <div>
                 <label>Title</label>
                 <input type='text' value={title} onChange={handleTitle} />
-            </div>
-            <div>
                 <label>Artist</label>
                 <input type='text' value={artist} onChange={handleArtist} />
-            </div>
-            <div>
                 <label>Album</label>
                 <input type='text' value={album} onChange={handleAlbum} />
-            </div>
-            <div>
                 <label>Release Date</label>
                 <input type='date' value={release_date} onChange={handleReleaseDate} />
-            </div>
-            <div>
                 <label>Genre</label>
                 <input type='text' value={genre} onChange={handleGenre} />
-            </div>
             <button type='submit'>Add Song to List</button>
         </form>
      );
