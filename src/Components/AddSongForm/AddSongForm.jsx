@@ -19,6 +19,14 @@ const AddSongForm = (props) => {
             genre: genre
         }
         props.addNewSongProperty(newSong)
+        // let resetForm = {
+        //     title: '',
+        //     artist: '',
+        //     album: '',
+        //     release_date: release_date,
+        //     genre: ''
+        // }
+
     }
 
     const handleTitle = e => setTitle(e.target.value);

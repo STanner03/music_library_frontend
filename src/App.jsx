@@ -1,4 +1,6 @@
-import { useState } from "react";
+import axios from 'axios';
+import React from 'react';
+import { useEffect, useState } from "react";
 import AddSongForm from "./Components/AddSongForm/AddSongForm";
 import MusicTable from "./Components/MusicTable/MusicTable";
 import NavBar from "./Components/NavBar/NavBar";
@@ -8,17 +10,26 @@ import './App.css'
 
 function App() {
 
-  const [songs, setSongs] = useState([{title: 'I Refuse', artist: 'Five Finger Death Punch', album: 'And Justice for None', release_date: '2018-01-01', genre: 'Rock'}])
+  const [songs, setSongs] = useState([])
 
-  function addNewSong(song){
-    let tempSongs = [song, ...songs];
-    setSongs(tempSongs);
+  useEffect(() => {
+    getAllSongs();
+  }, [])
+
+  async function getAllSongs(){
+    let response = await axios.get('http://127.0.0.1:8000/api/music/');
+    setSongs(response.data)
+  }
+
+  async function addNewSong(song){
+    let tempSongs = await axios.post('http://127.0.0.1:8000/api/music/', song);
+    setSongs(tempSongs.data);
   }
 
   return (
-    <div style={{backgroundImage: 'file:///C:/Users/shane/OneDrive/Desktop/devCodeCamp/FullStack/music_library_frontend/assets/Music-Streaming-Wars.webp'}}>
+    <div className='App'>
       <NavBar />
-      <SearchBar placeHolder="Enter Search Criteria" data={songs} />
+      <SearchBar data={songs} />
       <AddSongForm addNewSongProperty={addNewSong} />
       <MusicTable parentSongs={songs}/>
     </div>
