@@ -1,0 +1,15 @@
+.form-container {
+    border: 1px;
+    background: grey;
+    padding: 16px;
+    color: white;
+    text-align: center;
+    margin: 25px;
+    border: 3px solid black;
+    /* width: 80%; */
+    border-radius: 10px;
+}
+input {
+    margin-left: 5px;
+    margin-right: 5px;
+}

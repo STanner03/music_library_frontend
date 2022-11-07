@@ -31,7 +31,7 @@ function App() {
       <NavBar />
       <SearchBar data={songs} setSongs={setSongs} getAllSongs={getAllSongs} />
       <AddSongForm addNewSongProperty={addNewSong} />
-      <MusicTable parentSongs={songs}/>
+      <MusicTable parentSongs={songs} />
     </div>
   );
 }

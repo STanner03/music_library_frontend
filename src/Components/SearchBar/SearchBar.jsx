@@ -75,10 +75,10 @@ function SearchBar({ data, setSongs, getAllSongs }) {
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <a className="dataItem" href={<button></button>}>
-                <button type="submit" value={value}>
+                <p>
                   {value.title}, {value.artist}, {value.album},{" "}
                   {value.release_date}, {value.genre}{" "}
-                </button>
+                </p>
               </a>
             );
           })}
