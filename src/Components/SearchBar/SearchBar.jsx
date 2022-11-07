@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
+import RefreshIcon from '@mui/icons-material/Refresh';
 
-function SearchBar({ data, setSongs }) {
+function SearchBar({ data, setSongs, getAllSongs }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -33,12 +34,21 @@ function SearchBar({ data, setSongs }) {
   const newTable = (e) => {
     e.preventDefault();
     setSongs(filteredData);
+    setWordEntered("");
   };
 
-  const clearInput = () => {
+  const clearInput = (e) => {
+    e.preventDefault();
     setFilteredData([]);
     setWordEntered("");
   };
+
+  const refreshList = (e) => {
+    e.preventDefault();
+    setFilteredData([]);
+    setWordEntered("");
+    getAllSongs()
+  }
 
   return (
     <div className="search">
@@ -50,8 +60,11 @@ function SearchBar({ data, setSongs }) {
           onChange={handleFilter}
         />
         <div className="searchIcon">
-          {filteredData.length === 0 ? (
-            <SearchIcon id="btn" />
+          <SearchIcon onClick={newTable} id="btn" />
+        </div>
+        <div className="clearIcon">
+          {wordEntered.length === 0 ? (
+            <RefreshIcon id="btn" onClick={refreshList} />
           ) : (
             <CloseIcon id="btn" onClick={clearInput} />
           )}
@@ -62,7 +75,7 @@ function SearchBar({ data, setSongs }) {
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <a className="dataItem" href={<button></button>}>
-                <button type="submit" onClick={newTable} value={value}>
+                <button type="submit" value={value}>
                   {value.title}, {value.artist}, {value.album},{" "}
                   {value.release_date}, {value.genre}{" "}
                 </button>

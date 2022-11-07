@@ -29,7 +29,7 @@ function App() {
   return (
     <div className='App'>
       <NavBar />
-      <SearchBar data={songs} setSongs={setSongs} />
+      <SearchBar data={songs} setSongs={setSongs} getAllSongs={getAllSongs} />
       <AddSongForm addNewSongProperty={addNewSong} />
       <MusicTable parentSongs={songs}/>
     </div>
